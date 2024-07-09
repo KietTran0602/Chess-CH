@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5175126135574816857}
   - component: {fileID: 754749610155908108}
-  - component: {fileID: 5602731798415104803}
+  - component: {fileID: -830681963775306556}
   m_Layer: 0
   m_Name: KnightB
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5602731798415104803
+--- !u!114 &-830681963775306556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +94,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7334582410881049778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2c7eb538941bb4d880047ad00f6310, type: 3}
+  m_Script: {fileID: 11500000, guid: 3763cadd8000a9b4f92ce6e022df50e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: Black Rook
+  Hp: 0
+  Dmg: 0
+  Range: 0
+  UnitName: Black Knight
   OccupiedTile: {fileID: 0}
   Faction: 1
+  pieceName: 3

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: KnightW
   m_EditorClassIdentifier: 
   Faction: 0
-  unitPrefab: {fileID: 6910721294589598655, guid: b5afe14c07916d945917956e494395f9, type: 3}
+  PieceName: 3
+  unitPrefab: {fileID: 4773508910602004144, guid: b5afe14c07916d945917956e494395f9, type: 3}

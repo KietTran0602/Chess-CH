@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8345821230535963856}
   - component: {fileID: 1474008514762724429}
-  - component: {fileID: 6910721294589598655}
+  - component: {fileID: -4971005213309359202}
+  - component: {fileID: -5009042709943253744}
   m_Layer: 0
   m_Name: BishopW
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -6560921603304029962, guid: 041a407615311714287a62f0e0fd23ef, type: 3}
+  m_Sprite: {fileID: 1287865834, guid: 55864f8a9e5c69f4c845b3cb3eed4346, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +86,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6910721294589598655
+--- !u!95 &-4971005213309359202
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670206829536325467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aac71ac1bd90be24a86ddef608f2849d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-5009042709943253744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +116,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670206829536325467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b999980d4ce70fd4590749a7d8697f21, type: 3}
+  m_Script: {fileID: 11500000, guid: 37465a20698bfef4e8c3085348bd3bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: White Rook
+  Hp: 0
+  Dmg: 0
+  Range: 0
+  UnitName: White Bishop
   OccupiedTile: {fileID: 0}
   Faction: 0
+  pieceName: 2

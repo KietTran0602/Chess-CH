@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: RookB
   m_EditorClassIdentifier: 
   Faction: 1
-  unitPrefab: {fileID: 5602731798415104803, guid: 74a688c22393f7946bd80e02f87b534f, type: 3}
+  PieceName: 1
+  unitPrefab: {fileID: -2445466871927686395, guid: 74a688c22393f7946bd80e02f87b534f, type: 3}

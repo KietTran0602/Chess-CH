@@ -1,3 +1,6 @@
+using Assets.Scripts.Units.Black;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -5,7 +8,10 @@ public class Tile : MonoBehaviour
     public string TileName;
     [SerializeField] private Color _baseColor, _offsetColor;
     [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private GameObject _highlight;
+    [SerializeField] public GameObject _highlight;
+    [SerializeField] public GameObject _movehighlight;
+    [SerializeField] public GameObject _attackhighlight;
+
 
     [SerializeField] private bool _isWalkable;
 
@@ -20,6 +26,31 @@ public class Tile : MonoBehaviour
     {
         _highlight.SetActive(true);
         MenuManager.Instance.ShowTileInfo(this);
+        if (this.OccupiedUnit != null && this.OccupiedUnit.Faction == Faction.black && this.OccupiedUnit.pieceName == PieceName.Pawn)
+        {
+            var unit = (PawnB)this.OccupiedUnit;
+            unit.HpText.SetActive(true);
+
+            unit.DmgText.SetActive(true);
+            foreach (var item in unit.GetComponents<TextMeshPro>())
+            {
+                Debug.Log(item.name);
+
+            }
+            //switch (unit.GetComponent<TextMeshPro>().name)
+            //{
+            //    case "Hp":
+            //        unit.GetComponent<TextMeshPro>().text = this.OccupiedUnit.Hp.ToString();
+
+            //        break;
+            //    case "Dmg":
+            //        unit.GetComponent<TextMeshPro>().text = this.OccupiedUnit.Dmg.ToString();
+
+            //        break;
+            //}
+
+
+        }
     }
 
     private void OnMouseExit()
@@ -27,7 +58,6 @@ public class Tile : MonoBehaviour
         _highlight.SetActive(false);
         MenuManager.Instance.ShowTileInfo(null);
     }
-
     public void setUnit(BaseUnit unit)
     {
         if (unit.OccupiedTile != null)
@@ -35,40 +65,177 @@ public class Tile : MonoBehaviour
             unit.OccupiedTile.OccupiedUnit = null;
         }
         unit.transform.position = transform.position;
+
         OccupiedUnit = unit;
         unit.OccupiedTile = this;
     }
-
-    private void OnMouseDown()
+    public void OnMoveHighlight(BaseUnit unit)
     {
-        if (OccupiedUnit != null)
+        foreach (var tileEntry in GridManager.Instance.GetAllTile())
         {
-            if (GameManager.Instance.State == GameState.WhiteTurn)
+            var currentTile = tileEntry.Value;
+            if (unit.MoveRange().Contains(tileEntry.Key))
             {
-                if (OccupiedUnit.Faction == Faction.white)
-                {
-                    UnitManager.Instance.SetSelectedWhite((BaseWhite)OccupiedUnit);
-                }
-                else
-                {
-                    if (UnitManager.Instance.SelectedWhite != null)
-                    {
-                        var black = (BaseBlack)OccupiedUnit;
-                        Destroy(black.gameObject);
-                        UnitManager.Instance.SetSelectedWhite(null);
-                    }
-                }
+                currentTile._movehighlight.SetActive(true);
+            }
+            else
+            {
+                currentTile._movehighlight.SetActive(false);
             }
 
         }
-        else
+    }
+    public void OnAttackHighlight(BaseUnit unit)
+    {
+        foreach (var tileEntry in GridManager.Instance.GetAllTile())
         {
-            if (UnitManager.Instance.SelectedWhite != null)
+            var currentTile = tileEntry.Value;
+            if (unit.AttackRange().Contains(tileEntry.Key))
             {
-                setUnit(UnitManager.Instance.SelectedWhite);
-                UnitManager.Instance.SetSelectedWhite(null);
-
+                currentTile._attackhighlight.SetActive(true);
             }
+            else
+            {
+                currentTile._attackhighlight.SetActive(false);
+            }
+
+        }
+    }
+    public void OffMoveHighlight()
+    {
+        foreach (KeyValuePair<Vector2, Tile> tileEntry in GridManager.Instance.GetAllTile())
+        {
+            Tile currentTile = tileEntry.Value;
+            currentTile._movehighlight.SetActive(false);
+            currentTile._attackhighlight.SetActive(false);
+
+        }
+    }
+    private void OnMouseDown()
+    {
+
+        switch (GameManager.Instance.State)
+        {
+            case (GameState.WhiteTurn):
+                if (OccupiedUnit != null && OccupiedUnit.Faction == Faction.white)
+                {
+                    var unit = UnitManager.Instance.SetSelectedUnit(OccupiedUnit);
+                    OnMoveHighlight(unit);
+                    OnAttackHighlight(unit);
+                }
+                else if (UnitManager.Instance.SelectedUnit != null)
+                {
+                    if (this.OccupiedUnit == null)
+                    {
+                        Debug.Log("Move");
+                        MovePiece(UnitManager.Instance.SelectedUnit, GameState.BlackTurn);
+                    }
+                    else if (this.OccupiedUnit.Faction == Faction.black)
+                    {
+                        AttackPiece(UnitManager.Instance.SelectedUnit, GameState.BlackTurn);
+
+                    }
+                    OffMoveHighlight();
+                }
+                break;
+            case (GameState.BlackTurn):
+                if (OccupiedUnit != null && OccupiedUnit.Faction == Faction.black)
+                {
+                    var unit = UnitManager.Instance.SetSelectedUnit(OccupiedUnit);
+                    OnMoveHighlight(unit);
+                    OnAttackHighlight(unit);
+
+                }
+                else if (UnitManager.Instance.SelectedUnit != null)
+                {
+                    if (this.OccupiedUnit == null)
+                    {
+                        Debug.Log("Move");
+                        MovePiece(UnitManager.Instance.SelectedUnit, GameState.WhiteTurn);
+                    }
+                    else if (this.OccupiedUnit.Faction == Faction.white)
+                    {
+                        AttackPiece(UnitManager.Instance.SelectedUnit, GameState.WhiteTurn);
+                    }
+                    OffMoveHighlight();
+                }
+                break;
+        }
+    }
+
+    public void MovePiece(BaseUnit unit, GameState newGameState)
+    {
+        switch (unit.pieceName)
+        {
+            case PieceName.Pawn:
+                if (unit.MoveRange().Contains(this.transform.position))
+                {
+                    setUnit(unit);
+                    GameManager.Instance.updateGameState(newGameState);
+                }
+                break;
+            case PieceName.Rook:
+                if (unit.MoveRange().Contains(this.transform.position))
+                {
+                    setUnit(unit);
+                    GameManager.Instance.updateGameState(newGameState);
+                }
+                break;
+            case PieceName.Bishop:
+                if (unit.MoveRange().Contains(this.transform.position))
+                {
+                    setUnit(unit);
+                    GameManager.Instance.updateGameState(newGameState);
+                }
+                break;
+            case PieceName.Knight:
+                if (unit.MoveRange().Contains(this.transform.position))
+                {
+                    setUnit(unit);
+                    GameManager.Instance.updateGameState(newGameState);
+                }
+                break;
+            case PieceName.Queen:
+                if (unit.MoveRange().Contains(this.transform.position))
+                {
+                    setUnit(unit);
+                    GameManager.Instance.updateGameState(newGameState);
+                }
+                break;
+            case PieceName.King:
+                if (unit.MoveRange().Contains(this.transform.position))
+                {
+                    setUnit(unit);
+                    GameManager.Instance.updateGameState(newGameState);
+                }
+                break;
+            default:
+                break;
+        }
+        UnitManager.Instance.SetSelectedUnit(null);
+    }
+
+    public void AttackPiece(BaseUnit unit, GameState newGameState)
+    {
+        switch (unit.pieceName)
+        {
+            case PieceName.Pawn:
+                if (unit.AttackRange().Contains(this.transform.position))
+                {
+                    var enemy = GridManager.Instance.GetTileAtPosotion(this.transform.position).OccupiedUnit;
+                    unit.DealDmg(enemy);
+                    Debug.Log(enemy.Hp);
+                    if (enemy.Hp <= 0)
+                    {
+                        Destroy(enemy.gameObject);
+                        setUnit(unit);
+                    }
+                    OffMoveHighlight();
+                    GameManager.Instance.updateGameState(newGameState);
+                }
+                break;
+            default:
+                break;
         }
     }
 }

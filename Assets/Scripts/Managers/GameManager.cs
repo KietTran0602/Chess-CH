@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             case GameState.EndGame:
                 break;
         }
-
+        MenuManager.Instance.showGamestateinfo();
         OnStateChange?.Invoke(newState);
     }
 

@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8345821230535963856}
   - component: {fileID: 1474008514762724429}
-  - component: {fileID: 6910721294589598655}
+  - component: {fileID: 1386424114019733248}
+  - component: {fileID: 4773508910602004144}
   m_Layer: 0
   m_Name: KnightW
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 2390933351799268841, guid: 1a369960bc06075498548af3762b93c0, type: 3}
+  m_Sprite: {fileID: 1847819468, guid: 444726ce7b1e4b34fa8cd22d4f9b361c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +86,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6910721294589598655
+--- !u!95 &1386424114019733248
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670206829536325467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 942b99682938ebb4d8924f811ba43fd1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4773508910602004144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +116,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670206829536325467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b999980d4ce70fd4590749a7d8697f21, type: 3}
+  m_Script: {fileID: 11500000, guid: 3763cadd8000a9b4f92ce6e022df50e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: White Rook
+  Hp: 0
+  Dmg: 0
+  Range: 0
+  UnitName: White Knight
   OccupiedTile: {fileID: 0}
   Faction: 0
+  pieceName: 3

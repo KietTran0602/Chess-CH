@@ -1,14 +1,9 @@
-public class BaseWhite : BaseUnit
+using Assets.Scripts;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class BaseWhite : BaseUnit, MoveInterface
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public abstract override List<Vector2> MoveRange();
+    public abstract override List<Vector2> AttackRange();
 }

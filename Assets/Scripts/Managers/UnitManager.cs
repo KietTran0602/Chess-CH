@@ -8,6 +8,8 @@ public class UnitManager : MonoBehaviour
     private List<ScriptableUnit> _units;
 
     public BaseWhite SelectedWhite;
+    public BaseBlack SelectedBlack;
+    public BaseUnit SelectedUnit;
     public void Awake()
     {
         Instance = this;
@@ -28,25 +30,16 @@ public class UnitManager : MonoBehaviour
                     }
                     break;
                 case "RookW":
-                    for (int i = 0; i < 2; i++)
-                    {
-                        int targetX = i == 0 ? 0 : 7;
-                        AsignUnit(targetX, 0, unit);
-                    }
+                    AsignUnit(0, 0, unit);
+                    AsignUnit(7, 0, unit);
                     break;
                 case "BishopW":
-                    for (int i = 0; i < 2; i++)
-                    {
-                        int targetX = i == 0 ? 1 : 6;
-                        AsignUnit(targetX, 0, unit);
-                    }
+                    AsignUnit(1, 0, unit);
+                    AsignUnit(6, 0, unit);
                     break;
                 case "KnightW":
-                    for (int i = 0; i < 2; i++)
-                    {
-                        int targetX = i == 0 ? 2 : 5;
-                        AsignUnit(targetX, 0, unit);
-                    }
+                    AsignUnit(2, 0, unit);
+                    AsignUnit(5, 0, unit);
                     break;
                 case "QueenW":
                     AsignUnit(3, 0, unit);
@@ -71,25 +64,16 @@ public class UnitManager : MonoBehaviour
                     }
                     break;
                 case "RookB":
-                    for (int i = 0; i < 2; i++)
-                    {
-                        int targetX = i == 0 ? 0 : 7;
-                        AsignUnit(targetX, 7, unit);
-                    }
+                    AsignUnit(0, 7, unit);
+                    AsignUnit(7, 7, unit);
                     break;
                 case "BishopB":
-                    for (int i = 0; i < 2; i++)
-                    {
-                        int targetX = i == 0 ? 1 : 6;
-                        AsignUnit(targetX, 7, unit);
-                    }
+                    AsignUnit(1, 7, unit);
+                    AsignUnit(6, 7, unit);
                     break;
                 case "KnightB":
-                    for (int i = 0; i < 2; i++)
-                    {
-                        int targetX = i == 0 ? 2 : 5;
-                        AsignUnit(targetX, 7, unit);
-                    }
+                    AsignUnit(2, 7, unit);
+                    AsignUnit(5, 7, unit);
                     break;
                 case "QueenB":
                     AsignUnit(3, 7, unit);
@@ -113,9 +97,20 @@ public class UnitManager : MonoBehaviour
     //{
     //    return (T)_units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().unitPrefab;
     //}
-    public void SetSelectedWhite(BaseWhite white)
+    public BaseUnit SetSelectedUnit(BaseUnit unit)
     {
-        SelectedWhite = white;
-        MenuManager.Instance.showSelected(white);
+        SelectedUnit = unit;
+        MenuManager.Instance.showSelected(unit);
+        return unit;
     }
+    //public void SetSelectedWhite(BaseWhite white)
+    //{
+    //    SelectedWhite = white;
+    //    MenuManager.Instance.showSelected(white);
+    //}
+    //public void SetSelectedBlack(BaseBlack black)
+    //{
+    //    SelectedBlack = black;
+    //    MenuManager.Instance.showSelected(black);
+    //}
 }

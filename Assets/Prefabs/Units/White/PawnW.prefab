@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8345821230535963856}
   - component: {fileID: 1474008514762724429}
-  - component: {fileID: 6910721294589598655}
+  - component: {fileID: 608841610380148393}
+  - component: {fileID: -1886435271235851667}
   m_Layer: 0
   m_Name: PawnW
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 4584642206117540119, guid: 53fa6715317edcb4699553960520edb6, type: 3}
+  m_Sprite: {fileID: 1367052932, guid: 708ab1299bbc712459e063f1eef99663, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +86,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6910721294589598655
+--- !u!95 &608841610380148393
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670206829536325467}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46291c47947a6394a9858a4236beca16, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1886435271235851667
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -94,9 +116,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670206829536325467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b999980d4ce70fd4590749a7d8697f21, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ea0c816e3eb11e45965a81831690629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 4
+  Dmg: 2
   UnitName: White Pawn
   OccupiedTile: {fileID: 0}
   Faction: 0
+  pieceName: 0

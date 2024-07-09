@@ -10,14 +10,14 @@ public class MenuManager : MonoBehaviour
         Instance = this;
     }
 
-    public void showSelected(BaseWhite white)
+    public void showSelected(BaseUnit unit)
     {
-        if (white == null)
+        if (unit == null)
         {
             _selectedobj.SetActive(false);
             return;
         }
-        _selectedobj.GetComponentInChildren<TextMeshProUGUI>().text = white.UnitName;
+        _selectedobj.GetComponentInChildren<TextMeshProUGUI>().text = unit.UnitName;
         _selectedobj.SetActive(true);
     }
 
@@ -43,13 +43,13 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void showGamestateinfo(GameState state)
+    public void showGamestateinfo()
     {
-        if (state == null)
+        if (GameManager.Instance.State == null)
         {
             _gameStateobj.SetActive(false);
         }
-        _gameStateobj.GetComponentInChildren<TextMeshProUGUI>().text = state.ToString();
+        _gameStateobj.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.Instance.State.ToString();
         _gameStateobj.SetActive(true);
     }
 }

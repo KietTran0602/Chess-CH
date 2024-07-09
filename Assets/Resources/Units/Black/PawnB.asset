@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: PawnB
   m_EditorClassIdentifier: 
   Faction: 1
-  unitPrefab: {fileID: 5602731798415104803, guid: bb090a847a890e14f883163804926376, type: 3}
+  PieceName: 0
+  unitPrefab: {fileID: 2306768032873353457, guid: bb090a847a890e14f883163804926376, type: 3}

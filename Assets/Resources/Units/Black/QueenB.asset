@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: QueenB
   m_EditorClassIdentifier: 
   Faction: 1
-  unitPrefab: {fileID: 5602731798415104803, guid: 808a56fd24e4b8b488743a042ffbceb2, type: 3}
+  PieceName: 4
+  unitPrefab: {fileID: -560099581844159623, guid: 808a56fd24e4b8b488743a042ffbceb2, type: 3}

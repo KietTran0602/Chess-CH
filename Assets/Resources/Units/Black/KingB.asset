@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: KingB
   m_EditorClassIdentifier: 
   Faction: 1
-  unitPrefab: {fileID: 5602731798415104803, guid: 8d15edf0fd69ddb4ea02e9152e59cbc3, type: 3}
+  PieceName: 5
+  unitPrefab: {fileID: 7263387924810770341, guid: 8d15edf0fd69ddb4ea02e9152e59cbc3, type: 3}

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: BishopB
   m_EditorClassIdentifier: 
   Faction: 1
-  unitPrefab: {fileID: 5602731798415104803, guid: 366437b783246db439d7bb3e5d648f0c, type: 3}
+  PieceName: 2
+  unitPrefab: {fileID: -959956058566887037, guid: 366437b783246db439d7bb3e5d648f0c, type: 3}

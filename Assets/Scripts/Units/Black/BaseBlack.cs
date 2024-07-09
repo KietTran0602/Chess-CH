@@ -1,14 +1,9 @@
-public class BaseBlack : BaseUnit
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class BaseBlack : BaseUnit
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    public abstract override List<Vector2> MoveRange();
+    public abstract override List<Vector2> AttackRange();
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
